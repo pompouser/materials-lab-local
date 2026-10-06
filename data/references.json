@@ -1,0 +1,352 @@
+{
+  "1": [
+    {
+      "title": "Best Practices for the Synthesis, Activation, and Characterization of Metal–Organic Frameworks",
+      "authors": "Ashlee J. Howarth; Aaron W. Peters; Nicolaas A. Vermeulen; Timothy C. Wang; Joseph T. Hupp; Omar K. Farha",
+      "year": 2017,
+      "journal": "Chemistry of Materials",
+      "doi": "10.1021/acs.chemmater.6b02626",
+      "url": "https://pubs.acs.org/doi/10.1021/acs.chemmater.6b02626",
+      "summary": "教程综述 MOF 合成、活化及表征的实践方法，涵盖超临界 CO₂ 活化、XRD、氮气吸附与表面积计算，以及稳定性和组成表征。",
+      "scope": "支持讨论溶剂交换、活化与孔道开放；解释为何需要联合 XRD 与吸附判断样品质量。",
+      "access": "abstract"
+    },
+    {
+      "title": "Defect Engineering: Tuning the Porosity and Composition of the Metal–Organic Framework UiO-66 via Modulated Synthesis",
+      "authors": "Greig C. Shearer; Sachin Chavan; Silvia Bordiga; Stian Svelle; Unni Olsbye; Karl Petter Lillerud",
+      "year": 2016,
+      "journal": "Chemistry of Materials",
+      "doi": "10.1021/acs.chemmater.6b00602",
+      "url": "https://pubs.acs.org/doi/10.1021/acs.chemmater.6b00602",
+      "summary": "研究单羧酸调节剂存在时 UiO-66 的缺陷化学；调节剂浓度与酸性能够改变缺失簇缺陷的浓度，进而改变材料孔隙率及组成。",
+      "scope": "支持调节剂作用及合成参数讨论；研究对象为 UiO-66，不应直接把缺陷结论套用于所有 MOF。",
+      "access": "abstract"
+    },
+    {
+      "title": "New synthetic routes towards MOF production at scale",
+      "authors": "Marta Rubio-Martinez; Ceren Avci-Camur; Aaron W. Thornton; Inhar Imaz; Daniel Maspoch; Matthew R. Hill",
+      "year": 2017,
+      "journal": "Chemical Society Reviews",
+      "doi": "10.1039/C7CS00109F",
+      "url": "https://pubs.rsc.org/en/content/articlelanding/2017/cs/c7cs00109f",
+      "summary": "综述电化学、微波、机械化学、喷雾干燥及流动化学等 MOF 放大合成路线，同时讨论下游处理与商业化条件。",
+      "scope": "支持放大合成中的能耗、溶剂用量、洗涤活化及连续化工艺讨论。",
+      "access": "abstract"
+    }
+  ],
+  "2": [
+    {
+      "title": "Scherrer after sixty years: A survey and some new results in the determination of crystallite size",
+      "authors": "J. I. Langford; A. J. C. Wilson",
+      "year": 1978,
+      "journal": "Journal of Applied Crystallography",
+      "doi": "10.1107/S0021889878012844",
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1107/S0021889878012844",
+      "summary": "讨论 X 射线衍射获得的表观晶粒尺寸与真实尺寸的关系，并考察晶粒形状对尺寸估计的影响。",
+      "scope": "支持 Scherrer 公式的形状因子与适用范围讨论；晶粒尺寸不可直接当作颗粒尺寸或结晶度。",
+      "access": "abstract"
+    },
+    {
+      "title": "X-ray line broadening from filed aluminium and wolfram",
+      "authors": "G. K. Williamson; W. H. Hall",
+      "year": 1953,
+      "journal": "Acta Metallurgica",
+      "doi": "10.1016/0001-6160(53)90006-6",
+      "url": "https://www.xray.cz/xray/csca/kol2011/kurs/dalsi-cteni/clanky/Williamson-ActaMet-1953-1-22-WH-Plot.pdf",
+      "summary": "以冷加工铝与钨研究衍射峰展宽，指出小晶粒与应变可同时贡献峰宽，并讨论其随 Bragg 角变化的区别。",
+      "scope": "支持尺寸展宽、应变展宽与仪器展宽的区分，避免用单峰 Scherrer 值作过强结论。",
+      "access": "fulltext"
+    },
+    {
+      "title": "Size–strain separation in diffraction line profile analysis",
+      "authors": "P. Scardi; M. Ermrich; A. Fitch; E-Wen Huang; R. Jardin; R. Kuzel; A. Leineweber; A. Mendoza Cuevas; S. T. Misture; L. Rebuffi; Christian Schimpf",
+      "year": 2018,
+      "journal": "Journal of Applied Crystallography",
+      "doi": "10.1107/S1600576718005411",
+      "url": "https://journals.iucr.org/j/issues/2018/03/00/ks5592/index.html",
+      "summary": "跨实验室比较球磨铁合金的尺寸与应变展宽分离；高计数、平滑低背景和多个衍射峰有利于可靠分析，优质实验室数据也可获得有效结果。",
+      "scope": "支持步长、计数统计、仪器校准及背景处理对结果可靠性的讨论。",
+      "access": "fulltext"
+    }
+  ],
+  "3": [
+    {
+      "title": "Experimental aspects of buoyancy correction in measuring reliable high-pressure excess adsorption isotherms using the gravimetric method",
+      "authors": "Huong Giang T. Nguyen; Jarod C. Horn; Matthias Thommes; Roger D. van Zee; Laura Espinal",
+      "year": 2017,
+      "journal": "Measurement Science and Technology",
+      "doi": "10.1088/1361-6501/aa8f83",
+      "url": "https://www.nist.gov/publications/experimental-aspects-buoyancy-correction-measuring-reliable-high-pressure-excess",
+      "summary": "比较重量法吸附的浮力校正方法。温度梯度会影响整体体积校正；空白扣除可缓解温度分区、标定及体积估计导致的偏差。",
+      "scope": "直接支持浮力修正、空白测量及表观质量与真实吸附量的区别。",
+      "access": "abstract"
+    },
+    {
+      "title": "Physisorption of gases, with special reference to the evaluation of surface area and pore size distribution (IUPAC Technical Report)",
+      "authors": "Matthias Thommes; Katsumi Kaneko; Alexander V. Neimark; James P. Olivier; Francisco Rodriguez-Reinoso; Jean Rouquerol; Kenneth S. W. Sing",
+      "year": 2015,
+      "journal": "Pure and Applied Chemistry",
+      "doi": "10.1515/pac-2014-1117",
+      "url": "https://www.degruyterbrill.com/document/doi/10.1515/pac-2014-1117/html",
+      "summary": "IUPAC 技术报告统一气体物理吸附的术语、数据表达和表面积及孔径分析方法，并指出物理吸附数据解释中仍存在的问题。",
+      "scope": "支持 BET 区间选择、等温线类型、微孔材料局限及孔径分析讨论。",
+      "access": "abstract"
+    },
+    {
+      "title": "Best Practices for the Synthesis, Activation, and Characterization of Metal–Organic Frameworks",
+      "authors": "Ashlee J. Howarth; Aaron W. Peters; Nicolaas A. Vermeulen; Timothy C. Wang; Joseph T. Hupp; Omar K. Farha",
+      "year": 2017,
+      "journal": "Chemistry of Materials",
+      "doi": "10.1021/acs.chemmater.6b02626",
+      "url": "https://pubs.acs.org/doi/10.1021/acs.chemmater.6b02626",
+      "summary": "教程综述 MOF 合成、活化及表征的实践方法，涵盖超临界 CO₂ 活化、XRD、氮气吸附与表面积计算，以及稳定性和组成表征。",
+      "scope": "支持吸附测试前样品活化、氮气等温线与表面积计算；帮助分析残余溶剂导致的吸附结果差异。",
+      "access": "abstract"
+    }
+  ],
+  "4": [
+    {
+      "title": "A differential scanning calorimetry study on poly(ethylene terephthalate) isothermally crystallized at stepwise temperatures: Multiple melting behavior re-investigated",
+      "authors": "E. M. Woo; T. Y. Ko",
+      "year": 1996,
+      "journal": "Colloid and Polymer Science",
+      "doi": "10.1007/BF00654051",
+      "url": "https://researchoutput.ncku.edu.tw/en/publications/a-differential-scanning-calorimetry-study-on-polyethylene-terepht/",
+      "summary": "通过分步结晶及退火方案研究 PET 多重熔融峰，强调热历史与扫描过程中重组都会影响峰形，多个峰的结构解释需要直接证据。",
+      "scope": "支持 PET 熔融多峰、热历史与再结晶讨论，避免把多峰简单解释为不同化学物质。",
+      "access": "abstract"
+    },
+    {
+      "title": "DSC and DMTA study of annealed cold-drawn PET: a three phase model interpretation",
+      "authors": "A. Bartolotta; G. Di Marco; F. Farsaci; M. Lanza; M. Pieruccini",
+      "year": 2003,
+      "journal": "Polymer",
+      "doi": "10.1016/S0032-3861(03)00589-5",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0032386103005895",
+      "summary": "联合 DSC 与动态机械热分析研究不同退火条件下冷拉 PET 的热与力学行为，并在三相模型框架下讨论其可能机制。",
+      "scope": "支持晶相、可动非晶相与受限非晶相的区分，以及玻璃化转变和结晶度解释。",
+      "access": "abstract"
+    },
+    {
+      "title": "Effect of structural relaxation of glassy PET on crystallization process observed by the simultaneous DSC–XRD and DSC–FTIR",
+      "authors": "Tomoko Yoshii; Hirohisa Yoshida; Tadashi Kawai",
+      "year": 2005,
+      "journal": "Thermochimica Acta",
+      "doi": "10.1016/j.tca.2005.01.070",
+      "url": "https://www.sciencedirect.com/science/article/pii/S004060310500105X",
+      "summary": "同步 DSC–XRD 与 DSC–FTIR 研究玻璃态 PET 加热时的有序化，观察到玻璃化后的成核、冷结晶及熔融前的重组过程。",
+      "scope": "支持 Tg、冷结晶峰、熔融峰的区别与结构松弛对峰形的影响。",
+      "access": "abstract"
+    }
+  ],
+  "5": [
+    {
+      "title": "Validation of ATR FT-IR to identify polymers of plastic marine debris, including those ingested by marine organisms",
+      "authors": "Melissa R. Jung; F. David Horgen; Sara V. Orski; Viviana Rodriguez C.; Kathryn L. Beers; George H. Balazs; T. Todd Jones; Thierry M. Work; Kayla C. Brignac; Sarah-Jeanne Royer; K. David Hyrenbach; Brenda A. Jensen; Jennifer M. Lynch",
+      "year": 2018,
+      "journal": "Marine Pollution Bulletin",
+      "doi": "10.1016/j.marpolbul.2017.12.061",
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=924694",
+      "summary": "验证 ATR FT-IR 对常见塑料及海洋生物摄入塑料的聚合物鉴定能力，并给出无需昂贵谱库的鉴定思路。",
+      "scope": "支持按多组特征峰辨认聚合物、谱库比对及真实样品鉴定局限讨论。",
+      "access": "abstract"
+    },
+    {
+      "title": "Validated spreadsheet for the identification of PE, PET, PP and PS microplastics by micro-ATR-FTIR spectra with known uncertainty",
+      "authors": "Vanessa Morgado; Luís Gomes; Ricardo J. N. Bettencourt da Silva; Carla Palma",
+      "year": 2021,
+      "journal": "Talanta",
+      "doi": "10.1016/j.talanta.2021.122624",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0039914021005452",
+      "summary": "建立并验证用 micro-ATR-FTIR 识别 PE、PET、PP 和 PS 的方法，结合电子表格表达识别过程及已知不确定度。",
+      "scope": "支持识别置信程度、谱图匹配质量及方法验证，避免只凭一条吸收峰下结论。",
+      "access": "abstract"
+    },
+    {
+      "title": "Isotope ratio mass spectrometry and spectroscopic techniques for microplastics characterization",
+      "authors": "Quinn T. Birch; Phillip M. Potter; Patricio X. Pinto; Dionysios D. Dionysiou; Souhail R. Al-Abed",
+      "year": 2021,
+      "journal": "Talanta",
+      "doi": "10.1016/j.talanta.2020.121743",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0039914020310341",
+      "summary": "研究碳同位素质谱、ATR-FTIR 与微拉曼对常见塑料的互补表征；额外同位素信息可辅助聚合物识别及来源研究。",
+      "scope": "支持 FTIR 与 Raman 的互补性、单一谱学方法的局限和未知样品交叉验证。",
+      "access": "abstract"
+    }
+  ],
+  "6": [
+    {
+      "title": "ICTAC Kinetics Committee recommendations for performing kinetic computations on thermal analysis data",
+      "authors": "Sergey Vyazovkin; Alan K. Burnham; José M. Criado; Luis A. Pérez-Maqueda; Crisan Popescu; Nicolas Sbirrazzuoli",
+      "year": 2011,
+      "journal": "Thermochimica Acta",
+      "doi": "10.1016/j.tca.2011.03.034",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0040603111002152",
+      "summary": "建议以多个温度程序开展热分析动力学计算，讨论等转化率与模型拟合方法的可靠性，以及活化能、指前因子和反应模型的评价。",
+      "scope": "支持升温速率影响及 TGA 动力学讨论；单一升温曲线不能可靠确定反应机理。",
+      "access": "abstract"
+    },
+    {
+      "title": "Comprehensive Kinetic Study of PET Pyrolysis using TGA",
+      "authors": "Zaid Alhulaybi; Ibrahim Dubdub",
+      "year": 2023,
+      "journal": "Polymers",
+      "doi": "10.3390/polym15143010",
+      "url": "https://mdpi-res.com/d_attachment/polymers/polymers-15-03010/article_deploy/polymers-15-03010.pdf",
+      "summary": "在四种升温速率下分析 PET 热解 TGA 数据，比较多种动力学方法，并在其特定实验条件下评价表观活化能及反应模型。",
+      "scope": "支持 TG/DTG 特征、升温速率与热滞后讨论；文献模型及参数不能替代本实验拟合。",
+      "access": "fulltext"
+    },
+    {
+      "title": "Thermal degradation study of waste polyethylene terephthalate (PET) under inert and oxidative environments",
+      "authors": "Pallab Das; Pankaj Tiwari",
+      "year": 2019,
+      "journal": "Thermochimica Acta",
+      "doi": "10.1016/j.tca.2019.178340",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0040603119303776",
+      "summary": "对废饮料瓶 PET 在氮气和合成空气环境中的 TGA 降解行为及动力学进行比较，说明测试气氛对热降解评价的重要性。",
+      "scope": "支持惰性与氧化气氛、残余质量及热稳定性指标的比较。",
+      "access": "abstract"
+    }
+  ],
+  "7": [
+    {
+      "title": "Thermal stability and thermal expansion studies of PEEK and related polyimides",
+      "authors": "Sharon Xin Lu; Peggy Cebe; Malcolm Capel",
+      "year": 1996,
+      "journal": "Polymer",
+      "doi": "10.1016/0032-3861(96)89397-9",
+      "url": "https://www.sciencedirect.com/science/article/pii/0032386196893979",
+      "summary": "研究 PEEK 及相关聚酰亚胺的热稳定性和热膨胀；用 TMA 测定线膨胀系数，并观察到玻璃化转变处膨胀系数明显改变。",
+      "scope": "支持 TMA 曲线斜率、Tg 前后膨胀系数及 TMA 与 TGA 的区别。",
+      "access": "abstract"
+    },
+    {
+      "title": "Anisotropic Linear and Volumetric Thermal-Expansion Behaviors of Self-Standing Polyimide Films Analyzed by Thermomechanical Analysis (TMA) and Optical Interferometry",
+      "authors": "Shinji Ando; Kenji Sekiguchi; Masashi Mizoroki; Tomohiro Okada; Ryohei Ishige",
+      "year": 2018,
+      "journal": "Macromolecular Chemistry and Physics",
+      "doi": "10.1002/macp.201700354",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/macp.201700354",
+      "summary": "联合 TMA、光学干涉和动态机械分析研究十类聚酰亚胺膜，揭示分子结构、链取向及局部运动与面内/面外热膨胀各向异性的关系。",
+      "scope": "支持试样方向、链取向及线膨胀与体膨胀区别；2017 年在线发表，2018 年卷期。",
+      "access": "abstract"
+    },
+    {
+      "title": "Coefficient of Linear Thermal Expansion of Polymers and Polymer Composites: A Comprehensive Review",
+      "authors": "Alexander G. Khina; Denis P. Bulkatov; Ivan P. Storozhuk; Alexander P. Sokolov",
+      "year": 2025,
+      "journal": "Polymers",
+      "doi": "10.3390/polym17233097",
+      "url": "https://www.mdpi.com/2073-4360/17/23/3097",
+      "summary": "综述聚合物及复合材料线膨胀系数的测量与预测方法，比较 TMA 等接触法和非接触法，并讨论相态、结晶、填料及取向因素。",
+      "scope": "支持 TMA 方法选择、影响因素与热尺寸稳定性讨论；不应将跨材料表值直接当成本实验结果。",
+      "access": "abstract"
+    }
+  ],
+  "8": [
+    {
+      "title": "Digital photoelasticity – A comprehensive review",
+      "authors": "K. Ramesh; T. Kasimayan; B. Neethi Simon",
+      "year": 2011,
+      "journal": "The Journal of Strain Analysis for Engineering Design",
+      "doi": "10.1177/0309324711401501",
+      "url": "https://journals.sagepub.com/doi/10.1177/0309324711401501",
+      "summary": "按主题归纳数字光弹性技术的发展，比较不同测量与处理技术的优势和局限，为特定测量情境选择合适方法提供指导。",
+      "scope": "支持等色线、等倾线、相移法及条纹处理误差的讨论。",
+      "access": "abstract"
+    },
+    {
+      "title": "Digital photoelasticity: Recent developments and diverse applications",
+      "authors": "K. Ramesh; Sachin Sasikumar",
+      "year": 2020,
+      "journal": "Optics and Lasers in Engineering",
+      "doi": "10.1016/j.optlaseng.2020.106186",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0143816619315271",
+      "summary": "综述数字光弹性中的条纹采集和定量处理；等色线编码主应力差，等倾线编码方向，相移技术促进全场自动分析。",
+      "scope": "支持条纹能提供的应力信息、偏振装置及应力分离的局限讨论。",
+      "access": "abstract"
+    },
+    {
+      "title": "Integrated photoelasticity in a soft material: phase retardation, azimuthal angle, and stress-optic coefficient",
+      "authors": "Yuto Yokoyama; Benjamin R. Mitchell; Ali Nassiri; Brad L. Kinsey; Yannis P. Korkolis; Yoshiyuki Tagawa",
+      "year": 2023,
+      "journal": "Optics and Lasers in Engineering",
+      "doi": "10.1016/j.optlaseng.2022.107335",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0143816622003864",
+      "summary": "以软材料实验研究相位延迟、方位角及应力光学系数，比较测量与分析结果，并展示积分光弹性测量三维应力场的潜力。",
+      "scope": "支持应力光学系数标定、材料依赖性及二维/三维光弹性边界。",
+      "access": "abstract"
+    }
+  ],
+  "9": [
+    {
+      "title": "A method of measuring the resistivity and Hall coefficient on lamellae of arbitrary shape",
+      "authors": "L. J. van der Pauw",
+      "year": 1958,
+      "journal": "Philips Technical Review",
+      "doi": "",
+      "url": "https://pleclair.ua.edu/PH255/templates/van_der_Pauw/1958%20Van%20der%20Pauw%20%28Philips%20Tech%20Rev%29%20A%20method%20of%20measuring%20the%20resistivity%20and%20Hall%20coefficient%20on%20lamellae%20of%20arbitrary%20shape.pdf",
+      "summary": "提出用周边四触点测量任意形状薄片的电阻率与 Hall 系数的方法，给出相关定理及实际测量安排。",
+      "scope": "支持 van der Pauw 方程、几何与接触条件；该刊原始论文无已核实 DOI。",
+      "access": "fulltext"
+    },
+    {
+      "title": "Contact size effects on the van der Pauw method for resistivity and Hall coefficient measurement",
+      "authors": "Ronald Chwang; B. J. Smith; C. R. Crowell",
+      "year": 1974,
+      "journal": "Solid-State Electronics",
+      "doi": "10.1016/0038-1101(74)90001-X",
+      "url": "https://www.sciencedirect.com/science/article/pii/003811017490001X",
+      "summary": "利用电解槽实验与计算分析方形样片有限触点对电阻率及 Hall 测量的误差，给出选定几何条件的校正因子。",
+      "scope": "支持有限触点、短路效应及校正条件讨论；校正值依赖具体几何。",
+      "access": "abstract"
+    },
+    {
+      "title": "The 100th anniversary of the four-point probe technique: the role of probe geometries in isotropic and anisotropic systems",
+      "authors": "I. Miccoli; F. Edler; H. Pfnür; C. Tegenkamp",
+      "year": 2015,
+      "journal": "Journal of Physics: Condensed Matter",
+      "doi": "10.1088/0953-8984/27/22/223201",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25985184/",
+      "summary": "综述四点电学测量所需几何校正，涉及厚度、维度、各向异性和样品与触点相对尺寸，并讨论均匀性对电导率推算的限制。",
+      "scope": "支持四触点几何、样品各向异性和均匀性条件；该综述用于电阻率误差分析，不替代 Hall 符号与载流子模型。",
+      "access": "abstract"
+    }
+  ],
+  "10": [
+    {
+      "title": "Measurement of Sheet Resistivities with the Four-Point Probe",
+      "authors": "F. M. Smits",
+      "year": 1958,
+      "journal": "Bell System Technical Journal",
+      "doi": "10.1002/j.1538-7305.1958.tb03883.x",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1958.tb03883.x",
+      "summary": "推导并评价四探针对二维矩形与圆形样品测量片电阻的校正因子，说明有限样品边界必须纳入换算。",
+      "scope": "支持片电阻与体电阻率的区分，以及有限尺寸和边缘效应校正。",
+      "access": "abstract"
+    },
+    {
+      "title": "Resistivity Measurements on Germanium for Transistors",
+      "authors": "L. B. Valdes",
+      "year": 1954,
+      "journal": "Proceedings of the IRE",
+      "doi": "10.1109/JRPROC.1954.274680",
+      "url": "https://sites.science.oregonstate.edu/~tatej/TateLabWiki/lib/exe/fetch.php?media=mustread%3Avaldes_resistivity.pdf",
+      "summary": "介绍线性四探针测量锗电阻率的实验方法，并针对探针排列和导电/非导电边界等不同情形给出换算关系。",
+      "scope": "支持外针通电、内针测压、探针间距及厚样与薄样公式的适用条件。",
+      "access": "fulltext"
+    },
+    {
+      "title": "The 100th anniversary of the four-point probe technique: the role of probe geometries in isotropic and anisotropic systems",
+      "authors": "I. Miccoli; F. Edler; H. Pfnür; C. Tegenkamp",
+      "year": 2015,
+      "journal": "Journal of Physics: Condensed Matter",
+      "doi": "10.1088/0953-8984/27/22/223201",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25985184/",
+      "summary": "综述四点电学测量所需几何校正，涉及厚度、维度、各向异性和样品与触点相对尺寸，并讨论均匀性对电导率推算的限制。",
+      "scope": "支持四探针厚度、边界、间距与各向异性修正，帮助讨论为何测得 V/I 后仍需几何换算。",
+      "access": "abstract"
+    }
+  ]
+}

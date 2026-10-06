@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+!.env.example
+local-data/
+output/
+*.log
+fonts/
+*.pdf
+*.csv
+*.png
+*.jpg
+*.jpeg
+*.zip
