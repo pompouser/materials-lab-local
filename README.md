@@ -1,14 +1,15 @@
 # 材料实验工作台
 
-根据《材料基础实验》2026-09-14 讲义编写的本地网站：十项实验辅导与原理推导、十个教学模拟、30 道讲义讨论题的参考解答、每项实验三篇文献，以及实验数据与报告写作工作区。代码仓库为 private，网站只监听本机 127.0.0.1，没有部署 GitHub Pages 或任何云站点。
+根据《材料基础实验》2026-09-14 讲义编写的本地网站：十项实验辅导与原理推导、十个教学模拟、30 道讲义讨论题的参考解答、每项实验三篇文献，以及实验数据与报告写作工作区。代码仓库公开供审阅，网站只监听本机 127.0.0.1，没有部署 GitHub Pages 或任何云站点。
 
 ## 启动
 
 Windows 需要 Python 3.10+ 与系统宋体、黑体、Times New Roman。本机环境已具备依赖；其他机器首次运行：
 
 ```powershell
-python -m pip install -r requirements.txt
-python server.py
+python -m venv .venv
+.venv/Scripts/python.exe -m pip install -r requirements.txt
+.venv/Scripts/python.exe server.py
 ```
 
 打开 <http://127.0.0.1:5188>。也可双击 `启动网站.cmd`（启动隐藏的本地服务并打开浏览器）。端口可通过 `LAB_PORT` 环境变量修改。没有开机自启动；重新启动计算机后需重新运行启动文件。前台运行时 Ctrl+C 停止服务；启动脚本的后台服务可通过任务管理器结束对应的 Python 进程。
@@ -20,12 +21,16 @@ python server.py
 3. 在论文创建中填写日期、姓名、学号和组号，导入自己的 CSV 或编辑表格；单位在模板列名中。可选择计算参数并导出数据图。FTIR 默认 CSV 纵轴为透射率百分数，DSC 默认 W/g 且吸热向上，热分析每次只导入一个升温段。
 4. 上传个人过程描述 PDF（本地提取文字）或直接填写实际步骤；图表为可选。扫描 PDF 目前不提供 OCR，可手动填写。
 5. 点击“创建本地报告框架”可离线获得讨论题与计算结果，但分析、结论和文内引用仍需自己补全。使用 ChatGPT：复制资料包后打开 ChatGPT 粘贴，或下载提示词，再把返回的正文粘贴到编辑器。
-6. 使用 DeepSeek：在页面输入 Key（仅当次请求使用、不持久化），或启动服务前设置环境变量 `DEEPSEEK_API_KEY`。点击生成会把个人信息、数据、过程文字和文献资料发送到 DeepSeek API；可选图像只加入本地 PDF。模型默认 `deepseek-flash`，可按 [官方文档](https://api-docs.deepseek.com/) 修改。需要有效 Key 和余额，未配置 Key 时不会请求模型。
+6. 使用 DeepSeek：在页面输入 Key（仅当次请求使用、不持久化），或启动服务前设置环境变量 `DEEPSEEK_API_KEY`。先预览 AI 资料包；每次明确勾选同意后，点击生成会把去标识的数据、过程文字、图题和文献资料发送到 DeepSeek API。姓名学号等信息栏不发送，自动隐去不保证识别全部私密内容。可选图像只加入本地 PDF。模型默认 `deepseek-flash`，可按 [官方文档](https://api-docs.deepseek.com/) 修改。需要有效 Key 和余额，未配置 Key 时不会请求模型。
 7. 核对全部讨论题、真实数据解释以及至少三篇相关论文的文内引用，编辑正文后导出 PDF。格式为 A4、四边 2.5 cm、中文宋体 12 pt、英文/数字 Times New Roman 12 pt、标题黑体 12 pt、1.5 倍行距、正文首行缩进 2 字、两端对齐；含附录一的六项信息。图下放图题。报告超过六页时拒绝导出，不截断、不缩小字号。
 
 ## 数据与来源
 
-草稿及项目图表保存在当前浏览器的 localStorage；清除浏览器数据会丢失草稿。使用“备份当前实验项目”下载 JSON，并可从备份恢复。API Key 不进入 JSON、日志或 Git。服务不保存上传文件，仅内存处理；Git 忽略 PDF/CSV/图片、输出、字体与环境变量文件。讲义原件不在仓库中。文件名按 `实验编号_组别_姓名_学号.pdf` 导出（例如 `实验3_07组_张三_20260001.pdf`）。
+新草稿只在当前页面内存中，不自动写入浏览器或服务器。关闭/刷新前请输入 12–128 字符密码，使用左侧“加密备份当前实验”下载 `.mlab` 文件；恢复时先输入相同密码再选择文件。密码不会保存或传给服务器，遗忘无法恢复。旧版 JSON 仍可导入；旧浏览器缓存会提示备份后清除，不静默丢弃。
+
+API Key 不进入白名单项目、备份或日志，输入在生成请求后清空。图片导入移除 EXIF 等文件元数据，图片上的可见个人信息需自己裁剪。PDF/CSV 导出仍是普通文件，应妥善保管。默认 PDF 文件名为 `实验3_报告.pdf`；需要课程格式时勾选“在 PDF 文件名中加入组号、姓名和学号”，例如 `实验3_07组_张三_20260001.pdf`（虚构示例）。本地 PDF 信息栏保留课程要求的身份资料。
+
+公开仓库不含原讲义、个人数据、报告、备份、字体、环境配置或日志；上传采用显式文件清单。隐私默认设置、数据流、解析限制和使用边界见 [SECURITY.md](SECURITY.md)。
 
 `data/curriculum.json` 为整理后的讲义辅导内容。课程附录1–2来自讲义 PDF 第3–4页；十个实验及页码已标注。`build_content.py` 为初次整理脚本，需要仓库父目录中的外部 `lecture.txt`，日常启动不需要它。
 
@@ -42,8 +47,16 @@ BET 可调整拟合窗口，显示 nₘ、C、面积和一致性警示；默认 
 ## 验证
 
 ```powershell
-python -m unittest discover -s tests -v
+.venv/Scripts/python.exe -m unittest discover -s tests -v
 node --check static/app.js
+node --check static/privacy.js
+node --test tests/privacy.test.cjs
+# 依赖漏洞检查（先安装 pip-audit）
+.venv/Scripts/python.exe -m pip install pip-audit==2.10.1
+.venv/Scripts/pip-audit.exe -r requirements.txt
 ```
 
 测试验证 BET 已知参数恢复、DSC 积分单位、TMA 膨胀系数、霍尔偏置消除与不对称范德堡解、四探针两种模型、无效输入和 PDF 六页限制。DeepSeek 实际调用需用户 Key，未进行付费在线生成测试。后端固定连接 DeepSeek HTTPS 端点；仅接受本地 Host、同源请求与会话令牌。
+
+
+2026-10-07 公开前检查：28 项 Python 测试、5 项 JavaScript 测试；覆盖去标识资料包、云端发送确认、禁止重定向、项目字段白名单、公式防护、加密备份及篡改检测、图片元数据与像素限制、PDF 解压/页数/超时、同源令牌和静态路径限制。pip-audit 未发现已知依赖漏洞。付费模型调用未执行；模型请求采用模拟响应验证。GitHub Actions 仅运行检查，不部署网站。

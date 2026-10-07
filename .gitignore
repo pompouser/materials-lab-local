@@ -14,3 +14,17 @@ fonts/
 *.jpg
 *.jpeg
 *.zip
+*.mlab
+*.json
+!data/curriculum.json
+!data/references.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite*
+*.db
+lecture.txt
+local-settings.*
+security-artifacts/
+.codex/
