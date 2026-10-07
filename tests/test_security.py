@@ -111,6 +111,18 @@ class LocalHTTPTests(unittest.TestCase):
     def test_invalid_json_structure(self):
         for value in [[],{'params':[]},{'process':'x'*18001},{'metadata':{'name':{}}}]:
             self.assertEqual(self.request('/api/prompt',value)[0],400)
+    def test_xlsx_http_import_and_origin_gate(self):
+        from openpyxl import Workbook
+        book=Workbook();sheet=book.active
+        sheet.append(s.experiment(3)['columns']);sheet.append([.1,19])
+        target=io.BytesIO();book.save(target);book.close()
+        data={'experiment':3,'data':'data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,'+base64.b64encode(target.getvalue()).decode()}
+        status,_,body=self.request('/api/import-xlsx',data)
+        self.assertEqual(status,200);self.assertEqual(json.loads(body)['sheets'],['Sheet'])
+        status,_,body=self.request('/api/import-xlsx',{**data,'sheet':0})
+        self.assertEqual(status,200);self.assertEqual(json.loads(body)['rows'][0]['relative_pressure'],'0.1')
+        self.assertEqual(self.request('/api/import-xlsx',data,{'Origin':'https://attacker.invalid'})[0],403)
+        self.assertEqual(self.request('/api/import-xlsx',{**data,'sheet':True})[0],400)
     def test_private_filename_default_and_explicit_course_name(self):
         data={**bet(),'text':'## 1 实验过程\n这是用于测试隐私默认设置的实验过程与报告正文。','figures':[]}
         status,headers,_=self.request('/api/report.pdf',data)

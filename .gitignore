@@ -10,6 +10,9 @@ output/
 fonts/
 *.pdf
 *.csv
+*.xlsx
+*.xlsm
+*.xls
 *.png
 *.jpg
 *.jpeg

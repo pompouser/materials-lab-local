@@ -100,13 +100,15 @@ def decode_upload(value, mime, limit):
     if kind=='image/jpeg' and not raw.startswith(b'\xff\xd8\xff'): raise ValueError('图片类型与内容不一致')
     return raw
 
-def isolated_parse(mode,raw):
+def isolated_parse(mode,raw,options=None):
     if not PARSER_SLOTS.acquire(blocking=False): raise ValueError('文件处理繁忙，请稍后重试')
     try:
         # Credentials and proxy configuration are not inherited by the parser.
         env={k:v for k,v in os.environ.items() if k.upper() in ('SYSTEMROOT','WINDIR','PATH','TEMP','TMP','LANG')}
         try:
-            result=subprocess.run([sys.executable,'-I',str(ROOT/'parser_worker.py'),mode],input=raw,
+            arguments=[sys.executable,'-I',str(ROOT/'parser_worker.py'),mode]
+            if options is not None: arguments.append(json.dumps(options))
+            result=subprocess.run(arguments,input=raw,
                 stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,timeout=15,env=env,
                 creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
         except subprocess.TimeoutExpired: raise ValueError('文件解析超过 15 秒，已停止；请使用较小文件或手动填写') from None
@@ -371,6 +373,15 @@ class Handler(BaseHTTPRequestHandler):
             if route=='/api/validate-image':
                 raw=decode_upload(data.get('data'),'image/(?:png|jpeg)',4*1024*1024)
                 return self.respond(200,isolated_parse('image',raw))
+            if route=='/api/import-xlsx':
+                raw=decode_upload(data.get('data'),'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',8*1024*1024)
+                if not raw.startswith(b'PK\x03\x04'): raise ValueError('只接受有效的 .xlsx 工作簿')
+                exp=experiment(data['experiment'])
+                sheet=data.get('sheet')
+                if sheet is not None and (type(sheet) is not int or not 0<=sheet<20): raise ValueError('工作表选择无效')
+                result=isolated_parse('xlsx',raw,{'sheet':sheet,'columns':exp['columns']})
+                if 'rows' in result: result['rows']=validate_rows(exp,result['rows'])
+                return self.respond(200,result)
             if route=='/api/prompt': return self.respond(200,{'prompt':make_prompt(data)})
             if route=='/api/draft': return self.respond(200,{'text':draft(data)})
             if route=='/api/report.pdf':
