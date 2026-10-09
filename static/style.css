@@ -274,3 +274,17 @@ footer { display: flex; justify-content: space-between; gap: 16px; padding: 22px
   .button { font-size: 12px; }
   .workflow { font-size: 11px; gap: 6px; }
 }
+:root { --formula-ink: #203d2d; }
+.math-block { display: block; max-width: 100%; overflow-x: auto; overflow-y: hidden; margin: 14px 0; padding: 8px 4px; color: var(--formula-ink); }
+.math-block .katex-display { margin: 0; text-align: center; }
+.math-inline { display: inline-block; max-width: 100%; vertical-align: baseline; }
+.katex { font-size: 1.08em; }
+.theory-item { min-width: 0; }
+.math-error { font-family: ui-monospace, Consolas, monospace; font-size: 13px; white-space: pre-wrap; overflow-wrap: anywhere; color: #8a3c28; }
+.formula-preview { margin-top: 18px; padding: 18px 20px; border: 1px solid var(--line, #d7dfd9); border-radius: 8px; background: #f9fbf8; }
+.formula-preview summary { cursor: pointer; font-weight: 600; }
+.formula-preview code { font-size: 12px; overflow-wrap: anywhere; }
+.report-preview { max-height: 620px; overflow: auto; padding: 24px; background: #fff; border: 1px solid #e1e7e1; color: #24392b; font-family: 'SimSun', 'Songti SC', serif; font-size: 16px; line-height: 1.8; }
+.report-preview p { margin: 0 0 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.report-preview h3 { margin: 20px 0 12px; font-family: inherit; font-size: 17px; }
+@media (max-width: 600px) { .formula-preview { padding: 14px 12px; } .report-preview { padding: 16px 12px; } .math-block { padding: 8px 0; } }

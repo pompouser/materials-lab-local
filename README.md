@@ -30,7 +30,7 @@ python -m venv .venv
 
 API Key 不进入白名单项目、备份或日志，输入在生成请求后清空。图片导入移除 EXIF 等文件元数据，图片上的可见个人信息需自己裁剪。PDF/CSV 导出仍是普通文件，应妥善保管。默认 PDF 文件名为 `实验3_报告.pdf`；需要课程格式时勾选“在 PDF 文件名中加入组号、姓名和学号”，例如 `实验3_07组_张三_20260001.pdf`（虚构示例）。本地 PDF 信息栏保留课程要求的身份资料。
 
-公开仓库不含原讲义、个人数据、报告、备份、字体、环境配置或日志；上传采用显式文件清单。隐私默认设置、数据流、解析限制和使用边界见 [SECURITY.md](SECURITY.md)。
+公开仓库不含原讲义、个人数据、报告、备份、系统字体、环境配置或日志；本地排版所需的 MIT 许可 KaTeX 字体随代码附带。上传采用显式文件清单。隐私默认设置、数据流、解析限制和使用边界见 [SECURITY.md](SECURITY.md)。
 
 `data/curriculum.json` 为整理后的讲义辅导内容。课程附录1–2来自讲义 PDF 第3–4页；十个实验及页码已标注。`build_content.py` 为初次整理脚本，需要仓库父目录中的外部 `lecture.txt`，日常启动不需要它。
 
@@ -50,7 +50,8 @@ BET 可调整拟合窗口，显示 nₘ、C、面积和一致性警示；默认 
 .venv/Scripts/python.exe -m unittest discover -s tests -v
 node --check static/app.js
 node --check static/privacy.js
-node --test tests/privacy.test.cjs
+node --check static/math.js
+node --test tests/*.test.cjs
 # 依赖漏洞检查（先安装 pip-audit）
 .venv/Scripts/python.exe -m pip install pip-audit==2.10.1
 .venv/Scripts/pip-audit.exe -r requirements.txt
@@ -66,3 +67,12 @@ node --test tests/privacy.test.cjs
 论文创建支持 `.csv` 与 `.xlsx` 上传（最多 8 MB）。单个可见工作表自动导入；多个工作表先选择，再点击“导入所选工作表”。首个非空行是表头，列名沿用空白 CSV 模板，可调整列顺序；只保留该实验需要的列，忽略空白行。每个工作表限 10,001 行（含表头）、64 列，每格 256 字符。
 
 Excel 只读取单元格数值/文字，不导入格式、合并表头、图表或批注。公式使用 Excel 已保存的计算结果；没有缓存或包含错误时提示修正，不计算公式。请先在 Excel/WPS 中重新计算并保存，或粘贴为数值。旧 `.xls`、宏、嵌入对象和外部工作簿链接不支持；请另存为无宏 `.xlsx`。上传文件在本机受限子进程中解析，不保存原件、不发送到模型或 GitHub。
+
+
+## 公式排版
+
+十个实验的 60 条原理公式使用 `data/formulas.json` 中与原文对应的 LaTeX 排版，原理与计算模型不变。网页使用随代码附带的 KaTeX 0.19.0 与字体，无 CDN 请求。数学标签用英文（如 `sample`、`theory`），变量的中文解释保留在原理正文中。
+
+报告正文支持行内 `\(n\lambda=2d\sin\theta\)` 与独立 `\[D=\frac{K\lambda}{\beta\cos\theta}\]`，也接受 `$...$` 与 `$$...$$`。展开“正文排版与公式预览”查看编辑效果；这不是最终 PDF 分页预览。
+
+PDF 使用本地 Matplotlib MathText 在独立进程中生成 240 dpi 公式图，不执行完整 TeX。支持常用分式、上下标、根号、积分等；不支持矩阵环境、自定义宏、文件或链接命令，公式变量标签请用英文。每份文档最多 64 条公式、每条 512 字符，括号嵌套最多 16 层。网页和 PDF 的支持范围不同：网页语法错误保留原文，PDF 语法错误或超宽公式明确拒绝导出，需修改后重试。公式按 12 pt 排版，过宽时不缩小或裁切；高公式相应增加行高。PDF 中公式为嵌入图片，不能作为可搜索的公式文字提取；原始 LaTeX 保留在正文、Markdown 和加密备份中。

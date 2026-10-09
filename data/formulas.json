@@ -1,0 +1,362 @@
+[
+  {
+    "experiment": 1,
+    "source": "m理论 = n限量 × M产物 / 化学计量数",
+    "tex": "m_{\\mathrm{theory}}=\\frac{n_{\\mathrm{lim}}M_{\\mathrm{product}}}{\\nu}",
+    "display": true
+  },
+  {
+    "experiment": 1,
+    "source": "收率 = m干燥 / m理论 × 100%",
+    "tex": "\\eta=\\frac{m_{\\mathrm{dry}}}{m_{\\mathrm{theory}}}\\times100\\%",
+    "display": true
+  },
+  {
+    "experiment": 2,
+    "source": "d sinθ + d sinθ = 2d sinθ",
+    "tex": "d\\sin\\theta+d\\sin\\theta=2d\\sin\\theta",
+    "display": false
+  },
+  {
+    "experiment": 2,
+    "source": "nλ = 2d sinθ",
+    "tex": "n\\lambda=2d\\sin\\theta",
+    "display": true
+  },
+  {
+    "experiment": 2,
+    "source": "β样品 = √(β观测² − β仪器²)",
+    "tex": "\\beta_{\\mathrm{sample}}=\\sqrt{\\beta_{\\mathrm{obs}}^2-\\beta_{\\mathrm{inst}}^2}",
+    "display": true
+  },
+  {
+    "experiment": 2,
+    "source": "D = Kλ/(β样品 cosθ)",
+    "tex": "D=\\frac{K\\lambda}{\\beta_{\\mathrm{sample}}\\cos\\theta}",
+    "display": true
+  },
+  {
+    "experiment": 2,
+    "source": "Xc = A晶体/(A晶体 + A非晶) × 100%",
+    "tex": "X_c=\\frac{A_{\\mathrm{crystal}}}{A_{\\mathrm{crystal}}+A_{\\mathrm{amorphous}}}\\times100\\%",
+    "display": true
+  },
+  {
+    "experiment": 3,
+    "source": "表观质量 = 真实质量 − ρ气体 V排开",
+    "tex": "m_{\\mathrm{app}}=m_{\\mathrm{true}}-\\rho_{\\mathrm{gas}}V_{\\mathrm{displaced}}",
+    "display": true
+  },
+  {
+    "experiment": 3,
+    "source": "Δm校正 = Δm表观 + ρ气体 V骨架",
+    "tex": "\\Delta m_{\\mathrm{corr}}=\\Delta m_{\\mathrm{app}}+\\rho_{\\mathrm{gas}}V_{\\mathrm{solid}}",
+    "display": true
+  },
+  {
+    "experiment": 3,
+    "source": "x = p/p₀",
+    "tex": "x=\\frac{p}{p_0}",
+    "display": false
+  },
+  {
+    "experiment": 3,
+    "source": "y = x/[n(1−x)]",
+    "tex": "y=\\frac{x}{n(1-x)}",
+    "display": false
+  },
+  {
+    "experiment": 3,
+    "source": "y = a + bx",
+    "tex": "y=a+bx",
+    "display": true
+  },
+  {
+    "experiment": 3,
+    "source": "nₘ = 1/(a+b)",
+    "tex": "n_m=\\frac{1}{a+b}",
+    "display": true
+  },
+  {
+    "experiment": 3,
+    "source": "C = 1+b/a",
+    "tex": "C=1+\\frac{b}{a}",
+    "display": true
+  },
+  {
+    "experiment": 3,
+    "source": "S = nₘ N_A σ/22414 ≈ 4.353 nₘ m²/g",
+    "tex": "S=\\frac{n_mN_A\\sigma}{22414}\\approx4.353n_m\\;\\mathrm{m^2/g}",
+    "display": true
+  },
+  {
+    "experiment": 4,
+    "source": "ΔH = ∫(q−q基线) dt / m",
+    "tex": "\\Delta H=\\frac{1}{m}\\int(q-q_{\\mathrm{base}})\\,dt",
+    "display": true
+  },
+  {
+    "experiment": 4,
+    "source": "ΔH(J/g) = 60/β × ∫q净 dT",
+    "tex": "\\Delta H\\;(\\mathrm{J/g})=\\frac{60}{\\beta}\\int q_{\\mathrm{net}}\\,dT",
+    "display": true
+  },
+  {
+    "experiment": 4,
+    "source": "Xc = (ΔHm − ΔHcc)/(wPET ΔHm⁰) × 100%",
+    "tex": "X_c=\\frac{\\Delta H_m-\\Delta H_{cc}}{w_{\\mathrm{PET}}\\Delta H_m^0}\\times100\\%",
+    "display": true
+  },
+  {
+    "experiment": 5,
+    "source": "T = I/I₀",
+    "tex": "T=\\frac{I}{I_0}",
+    "display": false
+  },
+  {
+    "experiment": 5,
+    "source": "A = −log₁₀T",
+    "tex": "A=-\\log_{10}T",
+    "display": true
+  },
+  {
+    "experiment": 5,
+    "source": "ν̃ = (1/2πc)√(k/μ)",
+    "tex": "\\tilde{\\nu}=\\frac{1}{2\\pi c}\\sqrt{\\frac{k}{\\mu}}",
+    "display": true
+  },
+  {
+    "experiment": 5,
+    "source": "A = εcl",
+    "tex": "A=\\varepsilon cl",
+    "display": true
+  },
+  {
+    "experiment": 6,
+    "source": "残余质量 = m末/m初 ×100%",
+    "tex": "r=\\frac{m_{\\mathrm{final}}}{m_{\\mathrm{initial}}}\\times100\\%",
+    "display": true
+  },
+  {
+    "experiment": 6,
+    "source": "失重比例 = (m初−m末)/m初 ×100%",
+    "tex": "w=\\frac{m_{\\mathrm{initial}}-m_{\\mathrm{final}}}{m_{\\mathrm{initial}}}\\times100\\%",
+    "display": true
+  },
+  {
+    "experiment": 6,
+    "source": "DTG = dm/dT",
+    "tex": "\\mathrm{DTG}=\\frac{dm}{dT}",
+    "display": true
+  },
+  {
+    "experiment": 6,
+    "source": "dm/dt = β dm/dT",
+    "tex": "\\frac{dm}{dt}=\\beta\\frac{dm}{dT}",
+    "display": true
+  },
+  {
+    "experiment": 7,
+    "source": "α = (1/L₀)(dL/dT)",
+    "tex": "\\alpha=\\frac{1}{L_0}\\frac{dL}{dT}",
+    "display": true
+  },
+  {
+    "experiment": 7,
+    "source": "ε = ΔL/L₀",
+    "tex": "\\varepsilon=\\frac{\\Delta L}{L_0}",
+    "display": false
+  },
+  {
+    "experiment": 7,
+    "source": "σ = F/A₀",
+    "tex": "\\sigma=\\frac{F}{A_0}",
+    "display": true
+  },
+  {
+    "experiment": 8,
+    "source": "n₁−n₂ = C(σ₁−σ₂)",
+    "tex": "n_1-n_2=C(\\sigma_1-\\sigma_2)",
+    "display": true
+  },
+  {
+    "experiment": 8,
+    "source": "δ = Cd(σ₁−σ₂)",
+    "tex": "\\delta=Cd(\\sigma_1-\\sigma_2)",
+    "display": true
+  },
+  {
+    "experiment": 8,
+    "source": "N = δ/λ",
+    "tex": "N=\\frac{\\delta}{\\lambda}",
+    "display": false
+  },
+  {
+    "experiment": 8,
+    "source": "σ₁−σ₂ = N fσ/d",
+    "tex": "\\sigma_1-\\sigma_2=\\frac{Nf_\\sigma}{d}",
+    "display": true
+  },
+  {
+    "experiment": 8,
+    "source": "I/I₀ = sin²(πN)",
+    "tex": "\\frac{I}{I_0}=\\sin^2(\\pi N)",
+    "display": true
+  },
+  {
+    "experiment": 8,
+    "source": "I/I₀ = cos²(πN)",
+    "tex": "\\frac{I}{I_0}=\\cos^2(\\pi N)",
+    "display": true
+  },
+  {
+    "experiment": 8,
+    "source": "sin²(2θ)",
+    "tex": "\\sin^2(2\\theta)",
+    "display": false
+  },
+  {
+    "experiment": 8,
+    "source": "σx−σy = (σ₁−σ₂)cos2θ",
+    "tex": "\\sigma_x-\\sigma_y=(\\sigma_1-\\sigma_2)\\cos2\\theta",
+    "display": true
+  },
+  {
+    "experiment": 8,
+    "source": "τxy = ½(σ₁−σ₂)sin2θ",
+    "tex": "\\tau_{xy}=\\frac{1}{2}(\\sigma_1-\\sigma_2)\\sin2\\theta",
+    "display": true
+  },
+  {
+    "experiment": 9,
+    "source": "q(EH + v×B)=0",
+    "tex": "q(\\mathbf{E}_H+\\mathbf{v}\\times\\mathbf{B})=0",
+    "display": false
+  },
+  {
+    "experiment": 9,
+    "source": "EH = −v×B",
+    "tex": "\\mathbf{E}_H=-\\mathbf{v}\\times\\mathbf{B}",
+    "display": true
+  },
+  {
+    "experiment": 9,
+    "source": "J = nqv",
+    "tex": "\\mathbf{J}=nq\\mathbf{v}",
+    "display": false
+  },
+  {
+    "experiment": 9,
+    "source": "VH = RH IB/d",
+    "tex": "V_H=R_H\\frac{IB}{d}",
+    "display": true
+  },
+  {
+    "experiment": 9,
+    "source": "exp(−πRA/Rs)+exp(−πRB/Rs)=1",
+    "tex": "\\exp\\left(-\\frac{\\pi R_A}{R_s}\\right)+\\exp\\left(-\\frac{\\pi R_B}{R_s}\\right)=1",
+    "display": true
+  },
+  {
+    "experiment": 9,
+    "source": "Rs=πRA/ln2",
+    "tex": "R_s=\\frac{\\pi R_A}{\\ln2}",
+    "display": true
+  },
+  {
+    "experiment": 9,
+    "source": "VH = (V₁−V₂+V₃−V₄)/4",
+    "tex": "V_H=\\frac{V_1-V_2+V_3-V_4}{4}",
+    "display": true
+  },
+  {
+    "experiment": 9,
+    "source": "n = 1/(e|RH|)",
+    "tex": "n=\\frac{1}{e|R_H|}",
+    "display": true
+  },
+  {
+    "experiment": 9,
+    "source": "µH = |RH|/ρ",
+    "tex": "\\mu_H=\\frac{|R_H|}{\\rho}",
+    "display": true
+  },
+  {
+    "experiment": 10,
+    "source": "J=I/(2πr²)",
+    "tex": "J=\\frac{I}{2\\pi r^2}",
+    "display": false
+  },
+  {
+    "experiment": 10,
+    "source": "E=ρJ",
+    "tex": "E=\\rho J",
+    "display": false
+  },
+  {
+    "experiment": 10,
+    "source": "V=ρI/(2πr)",
+    "tex": "V=\\frac{\\rho I}{2\\pi r}",
+    "display": true
+  },
+  {
+    "experiment": 10,
+    "source": "V₂₃=ρI/(2πs)",
+    "tex": "V_{23}=\\frac{\\rho I}{2\\pi s}",
+    "display": true
+  },
+  {
+    "experiment": 10,
+    "source": "ρ=2πsV/I",
+    "tex": "\\rho=2\\pi s\\frac{V}{I}",
+    "display": true
+  },
+  {
+    "experiment": 10,
+    "source": "J=I/(2πrd)",
+    "tex": "J=\\frac{I}{2\\pi rd}",
+    "display": false
+  },
+  {
+    "experiment": 10,
+    "source": "V₂₃=ρI ln2/(πd)",
+    "tex": "V_{23}=\\frac{\\rho I\\ln2}{\\pi d}",
+    "display": true
+  },
+  {
+    "experiment": 10,
+    "source": "Rs=πV/(I ln2)",
+    "tex": "R_s=\\frac{\\pi V}{I\\ln2}",
+    "display": true
+  },
+  {
+    "experiment": 10,
+    "source": "ρ=Rs d",
+    "tex": "\\rho=R_s d",
+    "display": false
+  },
+  {
+    "experiment": 10,
+    "source": "ρ修正=kρ理想",
+    "tex": "\\rho_{\\mathrm{corr}}=k\\rho_{\\mathrm{ideal}}",
+    "display": true
+  },
+  {
+    "experiment": 10,
+    "source": "k=1/C",
+    "tex": "k=\\frac{1}{C}",
+    "display": false
+  },
+  {
+    "experiment": 10,
+    "source": "V电阻=(V+−V−)/2",
+    "tex": "V_{\\mathrm{res}}=\\frac{V_+-V_-}{2}",
+    "display": true
+  },
+  {
+    "experiment": 10,
+    "source": "ρ₂₃=ρT/[1+CT(T−23)]",
+    "tex": "\\rho_{23}=\\frac{\\rho_T}{1+C_T(T-23)}",
+    "display": true
+  }
+]

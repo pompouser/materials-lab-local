@@ -31,3 +31,8 @@ lecture.txt
 local-settings.*
 security-artifacts/
 .codex/
+
+!data/formulas.json
+# MIT-licensed KaTeX font assets; system/report fonts remain excluded.
+!static/vendor/katex/fonts/
+!static/vendor/katex/fonts/*.woff2

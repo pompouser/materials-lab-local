@@ -174,6 +174,35 @@ def image_data(raw):
         if len(safe)>4*1024*1024: raise ValueError('规范化图片超过 4 MB，请缩小图片')
         return {'data':'data:image/png;base64,'+base64.b64encode(safe).decode()}
 
+def math_images(raw):
+    # -I strips import paths; add only the trusted application directory.
+    from pathlib import Path
+    sys.path.insert(0,str(Path(__file__).resolve().parent))
+    from math_layout import validate_tex
+    from matplotlib.mathtext import MathTextParser
+    from matplotlib.font_manager import FontProperties
+    import numpy as np
+    from PIL import Image
+    values=json.loads(raw)
+    if not isinstance(values,list) or not 1<=len(values)<=64: raise ValueError('每份文档最多 64 条公式')
+    parser=MathTextParser('agg'); result=[]
+    for tex in values:
+        validate_tex(tex)
+        try:
+            parsed=parser.parse('$'+tex+'$',dpi=240,prop=FontProperties(size=12,math_fontfamily='stix'))
+        except (ValueError,RuntimeError):
+            raise ValueError('公式排版失败，请检查语法；PDF 支持分式、根号、上下标、积分等常用公式，不支持完整 LaTeX 环境') from None
+        if parsed.width>1500 or parsed.height>400 or parsed.width*parsed.height>240000:
+            raise ValueError('公式过宽或过高，请拆分为较短公式')
+        alpha=np.asarray(parsed.image)
+        image=Image.new('RGBA',(alpha.shape[1]+4,alpha.shape[0]+4),(0,0,0,0))
+        ink=Image.new('RGBA',(alpha.shape[1],alpha.shape[0]),(24,37,29,255))
+        ink.putalpha(Image.fromarray(alpha)); image.paste(ink,(2,2))
+        target=io.BytesIO(); image.save(target,format='PNG')
+        result.append({'data':base64.b64encode(target.getvalue()).decode(),
+            'width':image.width*72/240,'height':image.height*72/240,'depth':(parsed.depth+2)*72/240})
+    return {'formulas':result}
+
 if __name__ == '__main__':
     try:
         raw=sys.stdin.buffer.read(8*1024*1024+1)
@@ -182,6 +211,7 @@ if __name__ == '__main__':
         if mode=='pdf': answer=pdf_text(raw)
         elif mode=='image': answer=image_data(raw)
         elif mode=='xlsx': answer=xlsx_data(raw,json.loads(sys.argv[2]))
+        elif mode=='math': answer=math_images(raw)
         else: raise ValueError('文件解析模式无效')
         sys.stdout.write(json.dumps(answer,ensure_ascii=True))
     except ValueError as exc:
