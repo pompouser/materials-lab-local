@@ -42,8 +42,21 @@ const LabPrivacy = (() => {
       if (!object(f)) throw Error('图表无效');
       return {data: imageURL(f.data), caption: text(f.caption ?? '', 200)};
     });
+    let notesPDF=null;
+    if(source.notesPDF!=null){
+      if(!object(source.notesPDF)||!Number.isInteger(source.notesPDF.pages)||source.notesPDF.pages<1||source.notesPDF.pages>20)throw Error('说明 PDF 页数无效');
+      notesPDF={data:pdfURL(source.notesPDF.data),pages:source.notesPDF.pages};
+    }
     // Never spread imported state: unknown properties, including credentials, are discarded.
-    return {version:1, experiment:project.experiment, state:{metadata, rows, params, figures, chartNotes:text(source.chartNotes ?? '',18000), process:text(source.process,18000), report:text(source.report,18000), dataKind:source.dataKind === 'simulation' ? 'simulation' : 'real'}};
+    return {version:1, experiment:project.experiment, state:{metadata, rows, params, figures, notesPDF, chartNotes:text(source.chartNotes ?? '',18000), process:text(source.process,18000), report:text(source.report,18000), dataKind:source.dataKind === 'simulation' ? 'simulation' : 'real'}};
+  }
+  function pdfURL(value){
+    text(value,12*1024*1024);
+    const match=/^data:application\/pdf;base64,([A-Za-z0-9+/]+={0,2})$/.exec(value);
+    if(!match||match[1].length%4)throw Error('说明必须为完整 PDF 数据');
+    const raw=atob(match[1]);
+    if(raw.length>8*1024*1024||!raw.startsWith('%PDF-'))throw Error('说明 PDF 无效或超过 8 MB');
+    return value;
   }
   function csvCell(value) {
     let s = String(value ?? '');
@@ -68,19 +81,19 @@ const LabPrivacy = (() => {
   async function encrypt(project, password) {
     const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));
     const plain=new TextEncoder().encode(JSON.stringify(project));
-    if (plain.length > 16*1024*1024) throw Error('项目过大，请减少图表后备份');
+    if (plain.length > 40*1024*1024) throw Error('项目过大，请减少图表或说明 PDF 后备份');
     const encrypted=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:new TextEncoder().encode('materials-lab-v2')}, await key(password,salt,['encrypt']), plain);
     return {format:'materials-lab-encrypted',version:2,kdf:'PBKDF2-SHA256-310000',salt:bytes64(salt),iv:bytes64(iv),ciphertext:bytes64(new Uint8Array(encrypted))};
   }
   async function decrypt(envelope, password) {
     if (!object(envelope) || envelope.format !== 'materials-lab-encrypted' || envelope.version!==2 || envelope.kdf !== 'PBKDF2-SHA256-310000') throw Error('不支持的加密备份格式');
-    const salt=from64(envelope.salt,16),iv=from64(envelope.iv,12),encrypted=from64(envelope.ciphertext,16*1024*1024+16);
+    const salt=from64(envelope.salt,16),iv=from64(envelope.iv,12),encrypted=from64(envelope.ciphertext,40*1024*1024+16);
     if (salt.length!==16 || iv.length!==12) throw Error('加密参数无效');
     try {
       const plain=await crypto.subtle.decrypt({name:'AES-GCM',iv,additionalData:new TextEncoder().encode('materials-lab-v2')}, await key(password,salt,['decrypt']), encrypted);
       return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(plain));
     } catch { throw Error('密码错误或备份损坏，未恢复任何资料'); }
   }
-  return {imageURL,chartKind,cleanProject,csvCell,encrypt,decrypt};
+  return {imageURL,pdfURL,chartKind,cleanProject,csvCell,encrypt,decrypt};
 })();
 if (typeof module !== 'undefined') module.exports = LabPrivacy;

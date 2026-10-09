@@ -425,6 +425,10 @@ class Handler(BaseHTTPRequestHandler):
             if route=='/api/extract-pdf':
                 raw=decode_upload(data.get('data'),'application/pdf',8*1024*1024)
                 return self.respond(200,isolated_parse('pdf',raw))
+            if route=='/api/import-notes-pdf':
+                raw=decode_upload(data.get('data'),'application/pdf',8*1024*1024)
+                if not raw.startswith(b'%PDF-'): raise ValueError('只接受有效 PDF')
+                return self.respond(200,isolated_parse('notes-pdf',raw))
             if route=='/api/validate-image':
                 raw=decode_upload(data.get('data'),'image/(?:png|jpeg)',4*1024*1024)
                 return self.respond(200,isolated_parse('image',raw))

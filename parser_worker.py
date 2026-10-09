@@ -129,7 +129,7 @@ def xlsx_data(raw,options):
         book.close()
         if cached is not None: cached.close()
 
-def pdf_text(raw):
+def pdf_text(raw, retain_original=False):
     from pypdf import PdfReader, Configuration, apply_configuration
     config = Configuration(maximum_declared_stream_length=MAX_STREAM,
         array_based_stream_maximum_output_length=MAX_STREAM, zlib_maximum_output_length=MAX_STREAM,
@@ -141,7 +141,7 @@ def pdf_text(raw):
         reader = PdfReader(io.BytesIO(raw), root_object_recovery_limit=1000)
         if reader.is_encrypted: raise ValueError('不接受加密 PDF，请在本地解密后导入')
         count = len(reader.pages)
-        if not 1 <= count <= 20: raise ValueError('过程 PDF 限 1–20 页')
+        if not 1 <= count <= 20: raise ValueError('文字 PDF 限 1–20 页')
         chunks = []; total = 0; work = 0
         for page in reader.pages:
             content = page.get_contents()
@@ -150,10 +150,14 @@ def pdf_text(raw):
                 if work > 4 * MAX_STREAM: raise ValueError('PDF 解压后内容过大，请改为粘贴文字')
             value = page.extract_text() or ''
             total += len(value)
-            if total > 18000: raise ValueError('过程文字超过 18000 字符，请精简后导入')
-            chunks.append(value)
+            if total > 18000:
+                if not retain_original: raise ValueError('过程文字超过 18000 字符，请精简后导入')
+            if total <= 18000: chunks.append(value)
+        if total > 18000: return {'text':'','pages':count,'warning':'文字超过 18000 字符；原 PDF 可保留，请手动填写简要说明'}
         text = '\n'.join(chunks)
-        if len(text.strip()) < 20: raise ValueError('PDF 文字不足或为扫描件，请手动填写')
+        if len(text.strip()) < 20:
+            if retain_original: return {'text':'','pages':count,'warning':'未提取到足够文字；原 PDF 可保留，请手动填写说明'}
+            raise ValueError('PDF 文字不足或为扫描件，请手动填写')
         return {'text':text,'pages':count}
 
 def image_data(raw):
@@ -209,6 +213,7 @@ if __name__ == '__main__':
         if len(raw)>8*1024*1024: raise ValueError('文件过大')
         mode=sys.argv[1]
         if mode=='pdf': answer=pdf_text(raw)
+        elif mode=='notes-pdf': answer=pdf_text(raw,retain_original=True)
         elif mode=='image': answer=image_data(raw)
         elif mode=='xlsx': answer=xlsx_data(raw,json.loads(sys.argv[2]))
         elif mode=='math': answer=math_images(raw)

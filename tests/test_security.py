@@ -138,5 +138,14 @@ class LocalHTTPTests(unittest.TestCase):
         self.assertEqual(status,200);self.assertNotIn('TEST-STUDENT-42',headers['Content-Disposition'])
         status,headers,_=self.request('/api/report.pdf',{**data,'identifyingFilename':True})
         self.assertEqual(status,200);self.assertIn('TEST-STUDENT-42',headers['Content-Disposition'])
+    def test_notes_pdf_http_scan_and_origin_gate(self):
+        from test_notes_pdf import notes_pdf
+        data={'data':'data:application/pdf;base64,'+base64.b64encode(notes_pdf(False)).decode()}
+        status,_,body=self.request('/api/import-notes-pdf',data)
+        self.assertEqual(status,200);self.assertEqual(json.loads(body)['pages'],1)
+        self.assertIn('warning',json.loads(body))
+        for headers in ({'Origin':'https://attacker.invalid'},{'X-Lab-Token':'invalid'}):
+            self.assertEqual(self.request('/api/import-notes-pdf',data,headers)[0],403)
+        self.assertEqual(self.request('/api/import-notes-pdf',{'data':'data:application/pdf;base64,AAAA'})[0],400)
 
 if __name__=='__main__':unittest.main()

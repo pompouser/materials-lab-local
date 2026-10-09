@@ -27,6 +27,22 @@ test('project fields are allowlisted; credentials and extra CSV columns are drop
 test('whole image URL grammar rejects HTML, SVG, paths and mismatched signatures',()=>{
   for(const value of ['data:image/png;base64,AA"><form>','data:image/svg+xml;base64,AAAA','file:///private','data:image/jpeg;base64,JVBERi0xLjQ=']) assert.throws(()=>p.imageURL(value));
 });
+test('original PDF survives cleaning, encryption and restoration byte for byte',async()=>{
+  const source=project(),data='data:application/pdf;base64,'+Buffer.from('%PDF-1.4\nprivate-test-metadata\n%%EOF').toString('base64');
+  source.state.notesPDF={data,pages:2,filename:'private-test-name.pdf',apiKey:'test-secret'};
+  const clean=p.cleanProject(source,experiments);
+  assert.deepEqual(clean.state.notesPDF,{data,pages:2});
+  const restored=p.cleanProject(await p.decrypt(await p.encrypt(clean,'test-only-password-42'),'test-only-password-42'),experiments);
+  assert.equal(restored.state.notesPDF.data,data);assert.equal(restored.state.process,'过程');
+  assert.equal(p.cleanProject(project(),experiments).state.notesPDF,null);
+});
+test('PDF URLs and page counts are validated before restoring',()=>{
+  for(const data of ['file:///private.pdf','data:text/html;base64,JVBERi0=','data:application/pdf;base64,AAAA','data:application/pdf;base64,JVBERi0=\"<form>'])assert.throws(()=>p.pdfURL(data));
+  for(const pages of [0,21,true,'1']){
+    const source=project();source.state.notesPDF={data:'data:application/pdf;base64,JVBERi0=',pages};
+    assert.throws(()=>p.cleanProject(source,experiments));
+  }
+});
 test('malformed nested state and oversized text fail without partial restoration',()=>{
   const input=project();input.state.rows=[{batch:{},value:5}];assert.throws(()=>p.cleanProject(input,experiments));
   input.state.rows=[];input.state.report='x'.repeat(18001);assert.throws(()=>p.cleanProject(input,experiments));
