@@ -123,6 +123,15 @@ class LocalHTTPTests(unittest.TestCase):
         self.assertEqual(status,200);self.assertEqual(json.loads(body)['rows'][0]['relative_pressure'],'0.1')
         self.assertEqual(self.request('/api/import-xlsx',data,{'Origin':'https://attacker.invalid'})[0],403)
         self.assertEqual(self.request('/api/import-xlsx',{**data,'sheet':True})[0],400)
+    def test_chart_http_upload_bounds_and_auth(self):
+        from test_charts import SVG
+        data={'kind':'svg','capacity':5,'data':'data:image/svg+xml;base64,'+base64.b64encode(SVG).decode()}
+        status,_,body=self.request('/api/import-chart',data)
+        self.assertEqual(status,200);self.assertEqual(len(json.loads(body)['figures']),1)
+        self.assertEqual(self.request('/api/import-chart',data,{'Origin':'https://attacker.invalid'})[0],403)
+        self.assertEqual(self.request('/api/import-chart',data,{'X-Lab-Token':'invalid'})[0],403)
+        for extra in [{'capacity':0},{'capacity':True},{'kind':'html'},{'data':'data:application/pdf;base64,AAAA'}]:
+            self.assertEqual(self.request('/api/import-chart',{**data,**extra})[0],400)
     def test_private_filename_default_and_explicit_course_name(self):
         data={**bet(),'text':'## 1 实验过程\n这是用于测试隐私默认设置的实验过程与报告正文。','figures':[]}
         status,headers,_=self.request('/api/report.pdf',data)

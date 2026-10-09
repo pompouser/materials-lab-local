@@ -7,6 +7,17 @@ test('spreadsheet formulas become text; scientific negative numbers retain numer
   for(const value of ['-1.2','-1e-3','+.25','3']) assert.equal(p.csvCell(value),value);
   assert.equal(p.csvCell('a,b'),'"a,b"');
 });
+test('chart formats are explicit and MIME mismatch is rejected',()=>{
+  for(const [name,type,kind] of [['chart.PDF','application/pdf','pdf'],['chart.svg','image/svg+xml','svg'],['chart.png','','png'],['chart.jpg','image/jpeg','jpeg']])assert.equal(p.chartKind({name,type}),kind);
+  for(const file of [{name:'x.html',type:'text/html'},{name:'x.svg',type:'text/html'},{name:'x.pdf',type:'image/png'}])assert.throws(()=>p.chartKind(file));
+});
+test('figure-only drafts retain chart notes in encrypted backup and old drafts remain compatible',async()=>{
+  const source=project();source.state.rows=[];source.state.chartNotes='图1：用户记录的坐标、单位和结果。';
+  const clean=p.cleanProject(source,experiments);assert.deepEqual(clean.state.rows,[]);assert.equal(clean.state.chartNotes,source.state.chartNotes);
+  const password='test-only-password-42';const backup=await p.encrypt(clean,password);const restored=p.cleanProject(await p.decrypt(backup,password),experiments);assert.deepEqual(restored,clean);
+  assert.equal(p.cleanProject(project(),experiments).state.chartNotes,'');
+  source.state.chartNotes='x'.repeat(18001);assert.throws(()=>p.cleanProject(source,experiments));
+});
 test('project fields are allowlisted; credentials and extra CSV columns are dropped',()=>{
   const original=project();original.state.apiKey='test-only-key';original.state.rows[0].email='private@example.invalid';original.state.metadata.extra='secret';
   const clean=p.cleanProject(original,experiments);

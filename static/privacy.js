@@ -2,6 +2,14 @@
 // Shared import/export guards. These also run under Node for regression tests.
 const LabPrivacy = (() => {
   const object = x => x && typeof x === 'object' && !Array.isArray(x);
+  function chartKind(file) {
+    const extension=String(file.name??'').toLowerCase().split('.').pop();
+    const kind={pdf:'pdf',svg:'svg',png:'png',jpg:'jpeg',jpeg:'jpeg'}[extension];
+    if(!kind)throw Error('实验数据图支持 PDF、PNG、SVG 和 JPEG');
+    const expected={pdf:'application/pdf',svg:'image/svg+xml',png:'image/png',jpeg:'image/jpeg'}[kind];
+    if(file.type&&file.type!==expected&&file.type!=='application/octet-stream')throw Error('文件扩展名与类型不一致');
+    return kind;
+  }
   function text(x, limit) {
     if (typeof x !== 'string' || x.length > limit) throw Error('项目文字格式或长度无效');
     return x;
@@ -35,7 +43,7 @@ const LabPrivacy = (() => {
       return {data: imageURL(f.data), caption: text(f.caption ?? '', 200)};
     });
     // Never spread imported state: unknown properties, including credentials, are discarded.
-    return {version:1, experiment:project.experiment, state:{metadata, rows, params, figures, process:text(source.process,18000), report:text(source.report,18000), dataKind:source.dataKind === 'simulation' ? 'simulation' : 'real'}};
+    return {version:1, experiment:project.experiment, state:{metadata, rows, params, figures, chartNotes:text(source.chartNotes ?? '',18000), process:text(source.process,18000), report:text(source.report,18000), dataKind:source.dataKind === 'simulation' ? 'simulation' : 'real'}};
   }
   function csvCell(value) {
     let s = String(value ?? '');
@@ -73,6 +81,6 @@ const LabPrivacy = (() => {
       return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(plain));
     } catch { throw Error('密码错误或备份损坏，未恢复任何资料'); }
   }
-  return {imageURL,cleanProject,csvCell,encrypt,decrypt};
+  return {imageURL,chartKind,cleanProject,csvCell,encrypt,decrypt};
 })();
 if (typeof module !== 'undefined') module.exports = LabPrivacy;

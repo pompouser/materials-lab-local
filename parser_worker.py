@@ -212,6 +212,11 @@ if __name__ == '__main__':
         elif mode=='image': answer=image_data(raw)
         elif mode=='xlsx': answer=xlsx_data(raw,json.loads(sys.argv[2]))
         elif mode=='math': answer=math_images(raw)
+        elif mode=='chart':
+            from pathlib import Path
+            sys.path.insert(0,str(Path(__file__).resolve().parent))
+            from chart_import import import_chart
+            answer=import_chart(raw,json.loads(sys.argv[2]))
         else: raise ValueError('文件解析模式无效')
         sys.stdout.write(json.dumps(answer,ensure_ascii=True))
     except ValueError as exc:

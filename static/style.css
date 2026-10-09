@@ -283,6 +283,16 @@ footer { display: flex; justify-content: space-between; gap: 16px; padding: 22px
 .math-error { font-family: ui-monospace, Consolas, monospace; font-size: 13px; white-space: pre-wrap; overflow-wrap: anywhere; color: #8a3c28; }
 .formula-preview { margin-top: 18px; padding: 18px 20px; border: 1px solid var(--line, #d7dfd9); border-radius: 8px; background: #f9fbf8; }
 .formula-preview summary { cursor: pointer; font-weight: 600; }
+.chart-notes-label { display: block; margin-top: 20px; font-weight: 600; }
+.figure-preview-button { padding: 0; border: 0; background: none; cursor: zoom-in; width: 78px; }
+.figure-preview-button img { display: block; }
+.chart-preview { width: min(1000px, 94vw); max-height: 92vh; padding: 24px; border: 1px solid #cfd9d1; border-radius: 12px; background: #fff; color: var(--ink); }
+.chart-preview::backdrop { background: rgb(18 38 27 / 58%); }
+.chart-preview .card-top { margin-bottom: 14px; }
+.chart-preview h2 { font-size: 17px; overflow-wrap: anywhere; }
+.chart-preview img { display: block; width: 100%; max-height: 72vh; object-fit: contain; }
+@media (max-width: 600px) { .chart-preview { padding: 16px; } .chart-preview .card-top { align-items: flex-start; } }
+#chart-notes { width: 100%; margin-top: 8px; }
 .formula-preview code { font-size: 12px; overflow-wrap: anywhere; }
 .report-preview { max-height: 620px; overflow: auto; padding: 24px; background: #fff; border: 1px solid #e1e7e1; color: #24392b; font-family: 'SimSun', 'Songti SC', serif; font-size: 16px; line-height: 1.8; }
 .report-preview p { margin: 0 0 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
